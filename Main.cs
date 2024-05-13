@@ -14,19 +14,6 @@ namespace StudentsDiary
         {
             InitializeComponent();
 
-            //var students = new List<Student>();
-            //students.Add(new Student { FirstName = "Jan" });
-            //students.Add(new Student { FirstName = "Marek" });
-            //students.Add(new Student { FirstName = "Joanna" });
-
-            //SerializeToFile(students);
-
-            //var students = DeserializeFromFile();
-            //foreach (var item in students)
-            //{
-            //    MessageBox.Show(item.FirstName);
-            //}
-
         }
 
         public void SerializeToFile(List<Student> students)
@@ -49,9 +36,9 @@ namespace StudentsDiary
             var serializer = new XmlSerializer(typeof(List<Student>));
             using (var streamReader = new StreamReader(_filePath))
             {
-                var strudents = (List<Student>)serializer.Deserialize(streamReader);
+                var students = (List<Student>)serializer.Deserialize(streamReader);
                 streamReader.Close();
-                return strudents;
+                return students;
             }
         }
 
