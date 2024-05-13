@@ -18,7 +18,7 @@ namespace StudentsDiary
 
             // File.Delete(path); // usuwanie pliku
             //File.WriteAllText(path, "Zostań Programistą .NET"); // dodanie tekstu z nadpisywaniem
-            File.AppendAllText(path, "\nAkademia .NET"); // dodanie tekstu bez nadpisywania
+            File.AppendAllText(path, "Akademia .NET\n"); // dodanie tekstu bez nadpisywania
 
             var text = File.ReadAllText(path);
             MessageBox.Show(text); // wyświetlenie komunikatu w okienku
