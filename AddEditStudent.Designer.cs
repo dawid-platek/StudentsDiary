@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbId = new System.Windows.Forms.TextBox();
             this.lbId = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lbSurname = new System.Windows.Forms.Label();
-            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.lbFirstName = new System.Windows.Forms.Label();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
+            this.lbLastName = new System.Windows.Forms.Label();
+            this.tbLastName = new System.Windows.Forms.TextBox();
             this.lmMath = new System.Windows.Forms.Label();
             this.tbMath = new System.Windows.Forms.TextBox();
             this.lbTechnology = new System.Windows.Forms.Label();
@@ -48,10 +49,12 @@
             this.lbComments = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // tbId
             // 
+            this.tbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbId.Location = new System.Drawing.Point(99, 30);
             this.tbId.Name = "tbId";
             this.tbId.ReadOnly = true;
@@ -67,37 +70,39 @@
             this.lbId.TabIndex = 1;
             this.lbId.Text = "Id:";
             // 
-            // lbName
+            // lbFirstName
             // 
-            this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(12, 59);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(29, 13);
-            this.lbName.TabIndex = 3;
-            this.lbName.Text = "Imię:";
+            this.lbFirstName.AutoSize = true;
+            this.lbFirstName.Location = new System.Drawing.Point(12, 59);
+            this.lbFirstName.Name = "lbFirstName";
+            this.lbFirstName.Size = new System.Drawing.Size(29, 13);
+            this.lbFirstName.TabIndex = 3;
+            this.lbFirstName.Text = "Imię:";
             // 
-            // tbName
+            // tbFirstName
             // 
-            this.tbName.Location = new System.Drawing.Point(99, 56);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(170, 20);
-            this.tbName.TabIndex = 2;
+            this.tbFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFirstName.Location = new System.Drawing.Point(99, 56);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(170, 20);
+            this.tbFirstName.TabIndex = 2;
             // 
-            // lbSurname
+            // lbLastName
             // 
-            this.lbSurname.AutoSize = true;
-            this.lbSurname.Location = new System.Drawing.Point(12, 85);
-            this.lbSurname.Name = "lbSurname";
-            this.lbSurname.Size = new System.Drawing.Size(56, 13);
-            this.lbSurname.TabIndex = 5;
-            this.lbSurname.Text = "Nazwisko:";
+            this.lbLastName.AutoSize = true;
+            this.lbLastName.Location = new System.Drawing.Point(12, 85);
+            this.lbLastName.Name = "lbLastName";
+            this.lbLastName.Size = new System.Drawing.Size(56, 13);
+            this.lbLastName.TabIndex = 5;
+            this.lbLastName.Text = "Nazwisko:";
             // 
-            // tbSurname
+            // tbLastName
             // 
-            this.tbSurname.Location = new System.Drawing.Point(99, 82);
-            this.tbSurname.Name = "tbSurname";
-            this.tbSurname.Size = new System.Drawing.Size(170, 20);
-            this.tbSurname.TabIndex = 4;
+            this.tbLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbLastName.Location = new System.Drawing.Point(99, 82);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.Size = new System.Drawing.Size(170, 20);
+            this.tbLastName.TabIndex = 4;
             // 
             // lmMath
             // 
@@ -110,6 +115,7 @@
             // 
             // tbMath
             // 
+            this.tbMath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMath.Location = new System.Drawing.Point(99, 108);
             this.tbMath.Name = "tbMath";
             this.tbMath.Size = new System.Drawing.Size(170, 20);
@@ -126,6 +132,7 @@
             // 
             // tbTechnology
             // 
+            this.tbTechnology.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbTechnology.Location = new System.Drawing.Point(99, 134);
             this.tbTechnology.Name = "tbTechnology";
             this.tbTechnology.Size = new System.Drawing.Size(170, 20);
@@ -142,6 +149,7 @@
             // 
             // tbPhysics
             // 
+            this.tbPhysics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPhysics.Location = new System.Drawing.Point(99, 160);
             this.tbPhysics.Name = "tbPhysics";
             this.tbPhysics.Size = new System.Drawing.Size(170, 20);
@@ -158,6 +166,7 @@
             // 
             // tbPolishLang
             // 
+            this.tbPolishLang.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPolishLang.Location = new System.Drawing.Point(99, 186);
             this.tbPolishLang.Name = "tbPolishLang";
             this.tbPolishLang.Size = new System.Drawing.Size(170, 20);
@@ -174,6 +183,7 @@
             // 
             // tbForeignLang
             // 
+            this.tbForeignLang.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbForeignLang.Location = new System.Drawing.Point(99, 212);
             this.tbForeignLang.Name = "tbForeignLang";
             this.tbForeignLang.Size = new System.Drawing.Size(170, 20);
@@ -181,6 +191,7 @@
             // 
             // rtbComments
             // 
+            this.rtbComments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtbComments.Location = new System.Drawing.Point(99, 239);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(170, 96);
@@ -216,6 +227,12 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,15 +252,14 @@
             this.Controls.Add(this.tbTechnology);
             this.Controls.Add(this.lmMath);
             this.Controls.Add(this.tbMath);
-            this.Controls.Add(this.lbSurname);
-            this.Controls.Add(this.tbSurname);
-            this.Controls.Add(this.lbName);
-            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.lbLastName);
+            this.Controls.Add(this.tbLastName);
+            this.Controls.Add(this.lbFirstName);
+            this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lbId);
             this.Controls.Add(this.tbId);
             this.Name = "AddEditStudent";
             this.Text = "AddEditStudent";
-            this.Load += new System.EventHandler(this.AddEditStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,10 +269,10 @@
 
         private System.Windows.Forms.TextBox tbId;
         private System.Windows.Forms.Label lbId;
-        private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.Label lbSurname;
-        private System.Windows.Forms.TextBox tbSurname;
+        private System.Windows.Forms.Label lbFirstName;
+        private System.Windows.Forms.TextBox tbFirstName;
+        private System.Windows.Forms.Label lbLastName;
+        private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label lmMath;
         private System.Windows.Forms.TextBox tbMath;
         private System.Windows.Forms.Label lbTechnology;
@@ -271,5 +287,6 @@
         private System.Windows.Forms.Label lbComments;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

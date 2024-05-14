@@ -89,15 +89,15 @@
             this.dgvDiary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiary.Location = new System.Drawing.Point(12, 41);
             this.dgvDiary.Name = "dgvDiary";
-            this.dgvDiary.Size = new System.Drawing.Size(611, 523);
+            this.dgvDiary.Size = new System.Drawing.Size(976, 584);
             this.dgvDiary.TabIndex = 4;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(635, 580);
+            this.ClientSize = new System.Drawing.Size(1000, 641);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -105,7 +105,7 @@
             this.Controls.Add(this.btnAdd);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Location = new System.Drawing.Point(149, 100);
-            this.Name = "Form1";
+            this.Name = "Main";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).EndInit();
             this.ResumeLayout(false);
 
