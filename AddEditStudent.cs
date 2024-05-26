@@ -1,87 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace StudentsDiary
 {
     public partial class AddEditStudent : Form
     {
-        private string _filePath =
-            Path.Combine(Environment.CurrentDirectory, "students.txt");
         private int _studentId;
+        private Student _student;
+
+        private FileHelper<List<Student>> _fileHelper =
+    new FileHelper<List<Student>>(Program.FilePath);
 
         public AddEditStudent(int id = 0)
         {
             InitializeComponent();
             _studentId = id;
 
-            if (id != 0)
-            {
-                var students = DeserializeFromFile();
-                var student = students.FirstOrDefault(x => x.Id == id);
+            GetStudentData();
+            tbFirstName.Select();
+        }
 
-                if (student == null)
+        private void GetStudentData()
+        {
+            if (_studentId != 0)
+            {
+                Text = "Edytowanie danych ucznia";
+
+                var students = _fileHelper.DeserializeFromFile();
+                _student = students.FirstOrDefault(x => x.Id == _studentId);
+
+                if (_student == null)
                 {
                     throw new Exception("Brak ucznia o podanym Id.");
                 }
 
-                tbId.Text = student.Id.ToString();
-                tbFirstName.Text = student.FirstName;
-                tbLastName.Text = student.LastName;
-                tbMath.Text = student.Math;
-                tbPhysics.Text = student.Physics;
-                tbTechnology.Text = student.Technology;
-                tbPolishLang.Text = student.PolishLang;
-                tbForeignLang.Text = student.ForeignLang;
-                rtbComments.Text = student.Comments;
+                FillTextBoxes();
             }
-
-            tbFirstName.Select();
         }
-        public void SerializeToFile(List<Student> students)
 
+        private void FillTextBoxes()
         {
-            var serializer = new XmlSerializer(typeof(List<Student>));
-            using (var streamWriter = new StreamWriter(_filePath))
-            {
-                serializer.Serialize(streamWriter, students);
-                streamWriter.Close();
-            }
-
+            tbId.Text = _student.Id.ToString();
+            tbFirstName.Text = _student.FirstName;
+            tbLastName.Text = _student.LastName;
+            tbMath.Text = _student.Math;
+            tbPhysics.Text = _student.Physics;
+            tbTechnology.Text = _student.Technology;
+            tbPolishLang.Text = _student.PolishLang;
+            tbForeignLang.Text = _student.ForeignLang;
+            rtbComments.Text = _student.Comments;
         }
-
-        public List<Student> DeserializeFromFile()
-        {
-            if (!File.Exists(_filePath))
-                return new List<Student>();
-
-            var serializer = new XmlSerializer(typeof(List<Student>));
-            using (var streamReader = new StreamReader(_filePath))
-            {
-                var students = (List<Student>)serializer.Deserialize(streamReader);
-                streamReader.Close();
-                return students;
-            }
-        }
-
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var students = DeserializeFromFile();
+            var students = _fileHelper.DeserializeFromFile();
 
             if (_studentId != 0)
-            {
                 students.RemoveAll(x => x.Id == _studentId);
-            }
             else
-            {
-                var studentWithHighestId = students.OrderByDescending(x => x.Id).FirstOrDefault();
-                _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
-            }
+                AssignIdToNewStudent(students);
 
+            AddNewUserToList(students);
+
+            _fileHelper.SerializeToFile(students);
+
+            Close();
+        }
+
+        private void AddNewUserToList(List<Student> students)
+        {
             var student = new Student
             {
                 Id = _studentId,
@@ -94,12 +82,13 @@ namespace StudentsDiary
                 ForeignLang = tbForeignLang.Text,
                 Comments = rtbComments.Text,
             };
-
             students.Add(student);
-            SerializeToFile(students);
-            Close();
         }
-
+        private void AssignIdToNewStudent(List<Student> students)
+        {
+            var studentWithHighestId = students.OrderByDescending(x => x.Id).FirstOrDefault();
+            _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

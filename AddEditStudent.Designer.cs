@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 377);
+            this.ClientSize = new System.Drawing.Size(311, 389);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lbComments);
@@ -258,8 +258,10 @@
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lbId);
             this.Controls.Add(this.tbId);
+            this.MaximumSize = new System.Drawing.Size(327, 428);
             this.Name = "AddEditStudent";
-            this.Text = "AddEditStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodawanie ucznia";
             this.ResumeLayout(false);
             this.PerformLayout();
 
