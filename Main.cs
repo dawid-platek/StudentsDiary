@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -15,6 +16,32 @@ namespace StudentsDiary
             RefreshDiary();
             SetColumnsHeader();
 
+            var list = new List<int> { 2, 432, 22, 5, 80 };
+            var list2 = (from x in list
+                         where x > 10
+                         orderby x descending
+                         select x).ToList();
+
+            var list3 = list.Where(x => x > 10).OrderByDescending(x => x).ToList();
+
+            var students = new List<Student>();
+
+            var students1 = from x in students
+                            select x.Id;
+
+            var students2 = students.Select(x => x.Id);
+            var allPositivies = list.All(x => x > 0);
+
+            var anyNumberBiggerThan100 = list.Any(x => x > 100);
+            MessageBox.Show(anyNumberBiggerThan100.ToString());
+            var contain = list.Contains(5);
+            var sum = list.Sum();
+            var count = list.Count();
+            var avg = list.Average();
+            var max = list.Max();
+            var min = list.Min();
+
+            var firstElement = list.First(x => x > 10);
         }
 
         private void RefreshDiary()
