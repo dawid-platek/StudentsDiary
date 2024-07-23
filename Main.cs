@@ -15,15 +15,15 @@ namespace StudentsDiary
             RefreshDiary();
             SetColumnsHeader();
 
-            var student1 = new Student();
-            student1.FirstName = "1";
-            student1.Id = 1;
+            var list = new List<Person>()
+           { new Student { FirstName = "StudentImie", LastName = "StudentNawisko", Math = "2"},
+           new Teacher {FirstName = "TeacherImie", LastName = "TeacherNazwisko"},
+           };
 
-            var person = new Person();
-            person.Id = 2;
-
-            person = student1;
-            MessageBox.Show(person.Id.ToString());
+            foreach (var item in list)
+            {
+                MessageBox.Show(item.GetInfo());
+            }
         }
 
         private void RefreshDiary()
