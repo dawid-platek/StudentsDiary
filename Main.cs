@@ -15,15 +15,16 @@ namespace StudentsDiary
             RefreshDiary();
             SetColumnsHeader();
 
-            var list = new List<Person>()
-           { new Student { FirstName = "StudentImie", LastName = "StudentNawisko", Math = "2"},
-           new Teacher {FirstName = "TeacherImie", LastName = "TeacherNazwisko"},
-           };
-
-            foreach (var item in list)
+            try
             {
-                MessageBox.Show(item.GetInfo());
+                MessageBox.Show(Math.PI.ToString());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
 
         private void RefreshDiary()
