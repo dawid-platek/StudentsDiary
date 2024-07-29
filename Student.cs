@@ -1,38 +1,16 @@
-﻿using System;
-
-namespace StudentsDiary
+﻿namespace StudentsDiary
 {
-    public class Student : Person
+    public class Address
     {
-        public class Math
-        {
-            public const double PI = 3.14159;
-        }
-        private string _property;
-        public string Property
-
-        {
-            get
-            {
-                if (_property == "1")
-
-                    throw new Exception("Zła wartość.");
-                return _property;
-            }
-
-            set
-            {
-                System.Windows.Forms.MessageBox.Show("Przypisywanie wartości - SET");
-                _property = value;
-            }
-        }
-
+        public string City { get; set; }
+        public string Street { get; set; }
+    }
+    public class Student
+    {
         public Student()
         {
-            _privateField = "1";
+            Address = new Address();
         }
-        private readonly string _privateField;
-        public string PublicField;
 
         public string Math { get; set; }
         public string Technology { get; set; }
@@ -40,12 +18,8 @@ namespace StudentsDiary
         public string PolishLang { get; set; }
         public string ForeignLang { get; set; }
 
-
-        public override string GetInfo()
-        {
-            ProtectedField = "3";
-            return $"{FirstName} {LastName} - Oceny z matematyki: {Math}.";
-        }
+        public Address Address { get; set; }
+        public int Id { get; internal set; }
     }
 
 }

@@ -15,14 +15,8 @@ namespace StudentsDiary
             RefreshDiary();
             SetColumnsHeader();
 
-            try
-            {
-                MessageBox.Show(Math.PI.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            var student = new Student();
+            student.Address.City = "1";
 
 
         }
