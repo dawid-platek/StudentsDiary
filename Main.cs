@@ -6,6 +6,8 @@ namespace StudentsDiary
 {
     public partial class Main : Form
     {
+
+
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
 
@@ -13,10 +15,9 @@ namespace StudentsDiary
         {
             InitializeComponent();
             RefreshDiary();
+
             SetColumnsHeader();
 
-            var student = new Student();
-            student.Address.City = "1";
 
 
         }
@@ -37,6 +38,7 @@ namespace StudentsDiary
             dgvDiary.Columns[6].HeaderText = "Język polski";
             dgvDiary.Columns[7].HeaderText = "Język obcy";
             dgvDiary.Columns[8].HeaderText = "Uwagi";
+            ;
         }
 
 
