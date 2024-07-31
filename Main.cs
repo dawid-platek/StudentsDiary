@@ -45,7 +45,14 @@ namespace StudentsDiary
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
             var addEditStudent = new AddEditStudent();
+            addEditStudent.FormClosing += AddEditStudent_FormClosing;
             addEditStudent.ShowDialog();
+
+        }
+
+        private void AddEditStudent_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            RefreshDiary();
         }
 
         private void btnEdit_Click(object sender, System.EventArgs e)
@@ -57,6 +64,7 @@ namespace StudentsDiary
             }
 
             var addEditStudent = new AddEditStudent(Convert.ToInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
+            addEditStudent.FormClosing += AddEditStudent_FormClosing;
             addEditStudent.ShowDialog();
         }
 

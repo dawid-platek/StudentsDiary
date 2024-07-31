@@ -7,6 +7,7 @@ namespace StudentsDiary
 {
     public partial class AddEditStudent : Form
     {
+
         private int _studentId;
         private Student _student;
 
@@ -64,6 +65,8 @@ namespace StudentsDiary
             AddNewUserToList(students);
 
             _fileHelper.SerializeToFile(students);
+
+
 
             Close();
         }
