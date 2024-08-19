@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -53,7 +55,7 @@ namespace StudentsDiary
             tbForeignLang.Text = _student.ForeignLang;
             rtbComments.Text = _student.Comments;
         }
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private async void btnConfirm_Click(object sender, EventArgs e)
         {
             var students = _fileHelper.DeserializeFromFile();
 
@@ -66,9 +68,14 @@ namespace StudentsDiary
 
             _fileHelper.SerializeToFile(students);
 
-
+            await LongProcessAsync();
 
             Close();
+        }
+
+        private async Task LongProcessAsync()
+        {
+            await Task.Run(() => { Thread.Sleep(3000); });
         }
 
         private void AddNewUserToList(List<Student> students)
