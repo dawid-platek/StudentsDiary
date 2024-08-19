@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentsDiary.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -11,6 +12,18 @@ namespace StudentsDiary
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
 
+        public bool IsMaximize
+        {
+            get
+            {
+                return Settings.Default.IsMaximize;
+            }
+            set
+            {
+                Settings.Default.IsMaximize = value;
+            }
+        }
+
         public Main()
         {
             InitializeComponent();
@@ -18,7 +31,10 @@ namespace StudentsDiary
 
             SetColumnsHeader();
 
-
+            if (IsMaximize)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
 
         }
 
@@ -98,6 +114,19 @@ namespace StudentsDiary
         {
             var students = _fileHelper.DeserializeFromFile();
             dgvDiary.DataSource = students;
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                IsMaximize = true;
+            }
+            else
+            {
+                IsMaximize = false;
+            }
+            Settings.Default.Save();
         }
     }
 }
