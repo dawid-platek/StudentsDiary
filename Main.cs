@@ -1,6 +1,7 @@
 ﻿using StudentsDiary.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -11,6 +12,7 @@ namespace StudentsDiary
 
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
+        private List<Group> _groups;
 
         public bool IsMaximize
         {
@@ -27,9 +29,12 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
+            _groups = GroupsHelper.GetGroups("Wszyscy");
+            InitGroupsComboBox();
             RefreshDiary();
-
             SetColumnsHeader();
+            HideColumns();
+
 
             if (IsMaximize)
             {
@@ -37,23 +42,40 @@ namespace StudentsDiary
             }
 
         }
+        private void InitGroupsComboBox()
+        {
+            cmbGroups.DataSource = _groups;
+            cmbGroups.DisplayMember = "Name";
+            cmbGroups.ValueMember = "Id";
+        }
+        private void HideColumns()
+        {
+            dgvDiary.Columns[nameof(Student.GroupId)].Visible = false;
+        }
 
         private void RefreshDiary()
         {
             var students = _fileHelper.DeserializeFromFile();
+
+            var selectedGroupId = (cmbGroups.SelectedItem as Group).Id;
+            if (selectedGroupId != 0)
+            {
+                students = students.Where(x => x.GroupId == selectedGroupId).ToList();
+            }
             dgvDiary.DataSource = students;
         }
         private void SetColumnsHeader()
         {
-            dgvDiary.Columns[0].HeaderText = "Numer";
-            dgvDiary.Columns[1].HeaderText = "Imię";
-            dgvDiary.Columns[2].HeaderText = "Nazwisko";
-            dgvDiary.Columns[3].HeaderText = "Matematyka";
-            dgvDiary.Columns[4].HeaderText = "Technologia";
-            dgvDiary.Columns[5].HeaderText = "Fizyka";
-            dgvDiary.Columns[6].HeaderText = "Język polski";
-            dgvDiary.Columns[7].HeaderText = "Język obcy";
-            dgvDiary.Columns[8].HeaderText = "Uwagi";
+            dgvDiary.Columns[nameof(Student.Id)].HeaderText = "Numer";
+            dgvDiary.Columns[nameof(Student.FirstName)].HeaderText = "Imię";
+            dgvDiary.Columns[nameof(Student.LastName)].HeaderText = "Nazwisko";
+            dgvDiary.Columns[nameof(Student.Math)].HeaderText = "Matematyka";
+            dgvDiary.Columns[nameof(Student.Technology)].HeaderText = "Technologia";
+            dgvDiary.Columns[nameof(Student.Physics)].HeaderText = "Fizyka";
+            dgvDiary.Columns[nameof(Student.PolishLang)].HeaderText = "Język polski";
+            dgvDiary.Columns[nameof(Student.ForeignLang)].HeaderText = "Język obcy";
+            dgvDiary.Columns[nameof(Student.Comments)].HeaderText = "Uwagi";
+            dgvDiary.Columns[nameof(Student.AddClasses)].HeaderText = "Zajęcia dodatkowe";
             ;
         }
 
@@ -112,8 +134,8 @@ namespace StudentsDiary
 
         private void btnRefresh_Click(object sender, System.EventArgs e)
         {
-            var students = _fileHelper.DeserializeFromFile();
-            dgvDiary.DataSource = students;
+            InitGroupsComboBox();
+            RefreshDiary();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)

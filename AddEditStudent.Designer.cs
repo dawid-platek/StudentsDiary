@@ -50,6 +50,9 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.cbAddClasses = new System.Windows.Forms.CheckBox();
+            this.cmbGroup = new System.Windows.Forms.ComboBox();
+            this.lbGroup = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbId
@@ -192,7 +195,7 @@
             // rtbComments
             // 
             this.rtbComments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtbComments.Location = new System.Drawing.Point(99, 239);
+            this.rtbComments.Location = new System.Drawing.Point(99, 304);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(170, 96);
             this.rtbComments.TabIndex = 16;
@@ -201,7 +204,7 @@
             // lbComments
             // 
             this.lbComments.AutoSize = true;
-            this.lbComments.Location = new System.Drawing.Point(12, 242);
+            this.lbComments.Location = new System.Drawing.Point(12, 304);
             this.lbComments.Name = "lbComments";
             this.lbComments.Size = new System.Drawing.Size(40, 13);
             this.lbComments.TabIndex = 17;
@@ -209,7 +212,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(193, 342);
+            this.btnConfirm.Location = new System.Drawing.Point(194, 406);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 18;
@@ -219,7 +222,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(99, 341);
+            this.btnCancel.Location = new System.Drawing.Point(99, 406);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 19;
@@ -233,11 +236,41 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // cbAddClasses
+            // 
+            this.cbAddClasses.AutoSize = true;
+            this.cbAddClasses.Location = new System.Drawing.Point(99, 272);
+            this.cbAddClasses.Name = "cbAddClasses";
+            this.cbAddClasses.Size = new System.Drawing.Size(117, 17);
+            this.cbAddClasses.TabIndex = 20;
+            this.cbAddClasses.Text = "Zajęcia dodatkowe";
+            this.cbAddClasses.UseVisualStyleBackColor = true;
+            // 
+            // cmbGroup
+            // 
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.Location = new System.Drawing.Point(99, 239);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(170, 21);
+            this.cmbGroup.TabIndex = 21;
+            // 
+            // lbGroup
+            // 
+            this.lbGroup.AutoSize = true;
+            this.lbGroup.Location = new System.Drawing.Point(15, 239);
+            this.lbGroup.Name = "lbGroup";
+            this.lbGroup.Size = new System.Drawing.Size(36, 13);
+            this.lbGroup.TabIndex = 22;
+            this.lbGroup.Text = "Grupa";
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 389);
+            this.ClientSize = new System.Drawing.Size(289, 441);
+            this.Controls.Add(this.lbGroup);
+            this.Controls.Add(this.cmbGroup);
+            this.Controls.Add(this.cbAddClasses);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lbComments);
@@ -258,10 +291,11 @@
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lbId);
             this.Controls.Add(this.tbId);
-            this.MaximumSize = new System.Drawing.Size(327, 428);
+            this.MaximumSize = new System.Drawing.Size(367, 480);
             this.Name = "AddEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodawanie ucznia";
+            this.Load += new System.EventHandler(this.AddEditStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +324,8 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.CheckBox cbAddClasses;
+        private System.Windows.Forms.ComboBox cmbGroup;
+        private System.Windows.Forms.Label lbGroup;
     }
 }

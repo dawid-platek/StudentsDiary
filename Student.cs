@@ -11,6 +11,9 @@
         public string PolishLang { get; set; }
         public string ForeignLang { get; set; }
         public string Comments { get; set; }
+        public bool AddClasses { get; set; }
+        public int GroupId { get; set; }
+
     }
 }
 
